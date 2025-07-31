@@ -53,3 +53,48 @@ Destination filename [startup-config]?
 Building configuration...
 [OK]
 R1#exit
+
+R1#config t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#do sh run
+Building configuration...
+
+Current configuration : 690 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname R1
+!
+!
+!
+enable secret 5 $1$mERr$Bok4KDfVutXOJolNq009M/
+enable password cisco
+R1(config)#service pass
+R1(config)#service password-encryption 
+R1(config)#do sh run
+Building configuration...
+
+Current configuration : 696 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname R1
+!
+!
+!
+enable secret 5 $1$mERr$Bok4KDfVutXOJolNq009M/
+enable password 7 0822455D0A16
+!
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
