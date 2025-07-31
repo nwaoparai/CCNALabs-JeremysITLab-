@@ -14,38 +14,38 @@
 
 8. View the password in the running configuration.  Is it encrypted?
 
-Router>enable
-Router#configure terminal
-Enter configuration commands, one per line.  End with CNTL/Z.
-Router(config)#hostname R1
-R1(config)#enable password cisco
-R1(config)#exit
-R1#
-R1#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-R1(config)#service passwor
-R1(config)#service password-encryption 
-R1(config)#do sh run
-!
-hostname R1
-!
-!
-!
-enable password 7 0822455D0A16
-R1(config)#no service pa
-R1(config)#no service password-encryption 
-R1#sh run
-Building configuration...
-
-Current configuration : 655 bytes
-!
-version 15.1
-no service timestamps log datetime msec
-no service timestamps debug datetime msec
-no service password-encryption
-!
-hostname R1
-!
-!
-!
+Router>enable<br />
+Router#configure terminal<br />
+Enter configuration commands, one per line.  End with CNTL/Z.<br />
+Router(config)#hostname R1<br />
+R1(config)#enable password cisco<br />
+R1(config)#exit<br />
+R1#<br />
+R1#conf t<br />
+Enter configuration commands, one per line.  End with CNTL/Z.<br />
+R1(config)#service passwor<br />
+R1(config)#service password-encryption <br />
+R1(config)#do sh run<br />
+!<br />
+hostname R1<br />
+!<br />
+!<br />
+!<br />
+enable password 7 0822455D0A16<br />
+R1(config)#no service pa<br />
+R1(config)#no service password-encryption <br />
+R1#sh run<br />
+Building configuration...<br />
+<br />
+Current configuration : 655 bytes<br />
+!<br />
+version 15.1<br />
+no service timestamps log datetime msec<br />
+no service timestamps debug datetime msec<br />
+no service password-encryption<br />
+!<br />
+hostname R1<br />
+!<br />
+!<br />
+!<br />
 enable password 7 0822455D0A16
