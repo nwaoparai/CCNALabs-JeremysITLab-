@@ -7,7 +7,7 @@
 4. Set the IP addresses of the serial interfaces of R1 and R2 to 192.168.0.1/24 and 192.168.0.2/24, respectively.
 
 5. Ping between the routers to test connectivity.
-
+<br />
 SW1>en<br />
 SW1#sh cdp neigh<br />
 SW1#sh cdp neighbors<br /> 
@@ -28,31 +28,31 @@ R1#<br />
 %SYS-5-CONFIG_I: Configured from console by console<br />
 <br />
 %LINK-5-CHANGED: Interface Serial0, changed state to up<br />
-
-R2>en
-R2#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-R2(config)#int s0
-R2(config-if)#no shut
-
-R2(config-if)#
-%LINK-5-CHANGED: Interface Serial0, changed state to up
-
-R2(config-if)#
-%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0, changed state to up
-
-R1#sh cdp ne
-R1#sh cdp neighbors 
-Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
-                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
-Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID
-SW1          Fas 0            143            S       2960        Fas 0/1
-R2           Ser 0            131            R       C810        Ser 0
-
-R2#sh cdp nei
-R2#sh cdp neighbors 
-Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
-                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
+<br />
+R2>en<br />
+R2#conf t<br />
+Enter configuration commands, one per line.  End with CNTL/Z.<br />
+R2(config)#int s0<br />
+R2(config-if)#no shut<br />
+<br />
+R2(config-if)#<br />
+%LINK-5-CHANGED: Interface Serial0, changed state to up<br />
+<br />
+R2(config-if)#<br />
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0, changed state to up<br />
+<br />
+R1#sh cdp ne<br />
+R1#sh cdp neighbors <br />
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge<br />
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone<br />
+Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID<br />
+SW1          Fas 0            143            S       2960        Fas 0/1<br />
+R2           Ser 0            131            R       C810        Ser 0<br />
+<br />
+R2#sh cdp nei<br />
+R2#sh cdp neighbors <br />
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge<br />
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone<br />
 Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID<br />
 SW2          Fas 0            162            S       2960        Fas 0/1<br />
 R1           Ser 0            141            R       C810        Ser 0<br />
