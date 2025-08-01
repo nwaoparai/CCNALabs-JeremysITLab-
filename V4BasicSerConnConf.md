@@ -8,26 +8,26 @@
 
 5. Ping between the routers to test connectivity.
 
-SW1>en
-SW1#sh cdp neigh
-SW1#sh cdp neighbors 
-Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
-                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
-Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID
-R1           Fas 0/1          168            R       C810        Fas 0
-
-R1>en
-R1#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-R1(config)#int s0
-R1(config-if)#no shut
-
-%LINK-5-CHANGED: Interface Serial0, changed state to down
-R1(config-if)#end
-R1#
-%SYS-5-CONFIG_I: Configured from console by console
-
-%LINK-5-CHANGED: Interface Serial0, changed state to up
+SW1>en<br />
+SW1#sh cdp neigh<br />
+SW1#sh cdp neighbors<br /> 
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge<br />
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone<br />
+Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID<br />
+R1           Fas 0/1          168            R       C810        Fas 0<br />
+<br />
+R1>en<br />
+R1#conf t<br />
+Enter configuration commands, one per line.  End with CNTL/Z.<br />
+R1(config)#int s0<br />
+R1(config-if)#no shut<br />
+<br />
+%LINK-5-CHANGED: Interface Serial0, changed state to down<br />
+R1(config-if)#end<br />
+R1#<br />
+%SYS-5-CONFIG_I: Configured from console by console<br />
+<br />
+%LINK-5-CHANGED: Interface Serial0, changed state to up<br />
 
 R2>en
 R2#conf t
@@ -53,40 +53,40 @@ R2#sh cdp nei
 R2#sh cdp neighbors 
 Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
                   S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
-Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID
-SW2          Fas 0            162            S       2960        Fas 0/1
-R1           Ser 0            141            R       C810        Ser 0
-
-SW2>en
-SW2#sh cdp nei
-SW2#sh cdp neighbors 
-Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge
-                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone
-Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID
-R2           Fas 0/1          147            R       C810        Fas 0
-
-R1#show controllers serial 0
-Interface Serial0
-Hardware is PowerQUICC MPC860
-**DCE V.35, clock rate 2000000**
-idb at 0x81081AC4, driver data structure at 0x81084AC0
-SCC Registers:
-General [GSMR]=0x2:0x00000000, Protocol-specific [PSMR]=0x8
-
-R1(config)#int s0
-R1(config-if)#clock rate 64000
-R1(config-if)#ip address 192.168.0.1 255.255.255.0
-
-R2#conf t
-Enter configuration commands, one per line.  End with CNTL/Z.
-R2(config)#int s0
-R2(config-if)#ip address 192.168.0.2 255.255.255.0
-
-R2#ping 192.168.0.1
-
-Type escape sequence to abort.
-Sending 5, 100-byte ICMP Echos to 192.168.0.1, timeout is 2 seconds:
-!!!!!
-Success rate is 100 percent (5/5), round-trip min/avg/max = 1/13/26 ms
-
-%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0, changed state to up
+Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID<br />
+SW2          Fas 0            162            S       2960        Fas 0/1<br />
+R1           Ser 0            141            R       C810        Ser 0<br />
+<br />
+SW2>en<br />
+SW2#sh cdp nei<br />
+SW2#sh cdp neighbors <br />
+Capability Codes: R - Router, T - Trans Bridge, B - Source Route Bridge<br />
+                  S - Switch, H - Host, I - IGMP, r - Repeater, P - Phone<br />
+Device ID    Local Intrfce   Holdtme    Capability   Platform    Port ID<br />
+R2           Fas 0/1          147            R       C810        Fas 0<br />
+<br />
+R1#show controllers serial 0<br />
+Interface Serial0<br />
+Hardware is PowerQUICC MPC860<br />
+**DCE V.35, clock rate 2000000**<br />
+idb at 0x81081AC4, driver data structure at 0x81084AC0<br />
+SCC Registers:<br />
+General [GSMR]=0x2:0x00000000, Protocol-specific [PSMR]=0x8<br />
+<br />
+R1(config)#int s0<br />
+R1(config-if)#clock rate 64000<br />
+R1(config-if)#ip address 192.168.0.1 255.255.255.0<br />
+<br />
+R2#conf t<br />
+Enter configuration commands, one per line.  End with CNTL/Z.<br />
+R2(config)#int s0<br />
+R2(config-if)#ip address 192.168.0.2 255.255.255.0<br />
+<br />
+R2#ping 192.168.0.1<br />
+<br />
+Type escape sequence to abort.<br />
+Sending 5, 100-byte ICMP Echos to 192.168.0.1, timeout is 2 seconds:<br />
+!!!!!<br />
+Success rate is 100 percent (5/5), round-trip min/avg/max = 1/13/26 ms<br />
+<br />
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Serial0, changed state to up<br />
