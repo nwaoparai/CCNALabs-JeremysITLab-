@@ -15,10 +15,6 @@
 8. Save the configuration and reload the router to confirm.
 
 Router>enable
-Router#cobfig t
-              ^
-% Invalid input detected at '^' marker.
-	
 Router#config t
 Enter configuration commands, one per line.  End with CNTL/Z.
 Router(config)#hostname R1
