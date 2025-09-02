@@ -1,0 +1,51 @@
+1. Set the IP addresses of the physical interfaces connecting the two routers as follows, and enable the interfaces:
+   R1: 192.168.1.1/24
+   R2: 192.168.1.2/24
+
+2. Create a loopback interface on each router:
+   R1: 1.1.1.1/32
+   R2: 2.2.2.2/32
+
+3. From each router, attempt to ping both the local loopback interface and the loopback interface of the remote router.
+
+4. Remove the loopback interface of each router.
+
+R1>en
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#int g0/0
+R1(config-if)#ip address 192.168.1.1 255.255.255.0
+R1(config-if)#no shut
+
+R2>en
+R2#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R2(config)#int g0/0
+R2(config-if)#ip add 192.168.1.2 255.255.255.0
+R2(config-if)#no shut
+
+R2(config-if)#do ping 192.168.1.1
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 192.168.1.1, timeout is 2 seconds:
+.!!!!
+Success rate is 80 percent (4/5), round-trip min/avg/max = 0/0/0 ms
+
+R1(config-if)#int loopback 0
+
+R1(config-if)#
+%LINK-5-CHANGED: Interface Loopback0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback0, changed state to up
+
+R1(config-if)#ip add 1.1.1.1 255.255.255.255
+
+Static route for the loopback interfaces have already been created to ensure connectivity
+
+R1#ping 2.2.2.2
+
+Type escape sequence to abort.
+Sending 5, 100-byte ICMP Echos to 2.2.2.2, timeout is 2 seconds:
+!!!!!
+Success rate is 100 percent (5/5), round-trip min/avg/max = 0/0/0 ms
+
