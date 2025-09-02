@@ -1,0 +1,57 @@
+1. Enable port security on the switchports connected to end hosts.
+
+2. Ping from PC1 to PC2 to generate traffic between them.
+
+3. Use a show command to view the secure MAC addresses on SW1.  PC1's MAC address should be in the table.
+
+4. Check the configuration of SW1's F0/2 interface in the running configuration.  Take note of the configurations.
+
+5. Save the running configuration of SW1, and reload the switch.
+
+6. View the secure MAC addresses on SW1 again.  Is PC1's MAC address still present?
+
+7. Enable sticky secure MAC addresses on the F0/2 interface of SW1, and ping from PC1 to PC2 to generate traffic.
+
+8.  View the secure MAC addresses on SW1, then view the configuration of F0/2 in the running configuration.  What is different?
+
+9. Save the running configuration and reload the switch.
+
+10. View the secure MAC addresses on SW1 again.  Is PC1's MAC address still present?
+
+SW1>en
+SW1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW1(config)#int f0/2
+SW1(config-if)#switchport mode access
+SW1(config-if)#switchport por
+SW1(config-if)#switchport port-security 
+
+SW2>en
+SW2#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW2(config)#int f0/2
+SW2(config-if)#switchport mode access
+SW2(config-if)#switchport port
+SW2(config-if)#switchport port-security 
+
+C:\>ping 192.168.1.12
+
+Pinging 192.168.1.12 with 32 bytes of data:
+
+Reply from 192.168.1.12: bytes=32 time=33ms TTL=128
+Reply from 192.168.1.12: bytes=32 time<1ms TTL=128
+Reply from 192.168.1.12: bytes=32 time<1ms TTL=128
+Reply from 192.168.1.12: bytes=32 time<1ms TTL=128
+
+SW1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW1(config)#int f0/2
+SW1(config-if)#switchport port-security mac-address sticky
+
+SW1#sh port-security address
+			Secure Mac Address Table
+-------------------------------------------------------------------------------
+Vlan	Mac Address	Type			Ports		Remaining Age
+								(mins)
+----	-----------	----			-----		-------------
+1	0002.16E2.2193	SecureSticky		FastEthernet0/2
