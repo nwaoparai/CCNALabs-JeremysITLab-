@@ -1,0 +1,32 @@
+1. Use PC1 to connect to R1 via the console port.
+
+2. Create two users on R1:
+   Username: ccna  /  Secret: Cisco
+   Username: ccnp  /  Secret: Cisco
+
+3. Set the console port to use the local database to authenticate users.
+
+4. Set a 'message of the day' banner of 'Welcome to Packet Tracer' and a login banner of 'Authorized users only!'.
+
+5. Logout and then login with one of the users created.  Did the banners display properly?
+
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#username ccna secret Cisco
+R1(config)#username ccnp secret Cisco
+
+R1(config)#line console 0
+R1(config-line)#login local
+R1(config-line)#exit
+R1(config)#banner motd ?
+  LINE  c banner-text c, where 'c' is a delimiting character
+R1(config)#banner motd *Welcome to Packet Tracer*
+R1(config)#banner login *Authorized users only*
+
+Welcome to Packet Tracer
+Authorized users only
+
+User Access Verification
+
+Username: ccna
+Password: 
