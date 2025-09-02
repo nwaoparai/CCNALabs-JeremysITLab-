@@ -14,34 +14,34 @@
 
 8. Save the configuration and reload the router to confirm.
 
-Router>enable
-Router#config t
-Enter configuration commands, one per line.  End with CNTL/Z.
-Router(config)#hostname R1
-R1(config)#enable password cisco
-R1(config)#do sh run
-Building configuration...
+Router>enable<br/>
+Router#config t<br/>
+Enter configuration commands, one per line.  End with CNTL/Z.<br/>
+Router(config)#hostname R1<br/>
+R1(config)#enable password cisco<br/>
+R1(config)#do sh run<br/>
+Building configuration...<br/>
+<br/>
+Current configuration : 643 bytes<br/>
+!<br/>
+version 15.1<br/>
+no service timestamps log datetime msec<br/>
+no service timestamps debug datetime msec<br/>
+no service password-encryption<br/>
+!<br/>
+hostname R1<br/>
+!<br/>
+!<br/>
+!<br/>
+enable password cisco<br/>
+!<br/>
+!<br/>
+!<br/>
 
-Current configuration : 643 bytes
-!
-version 15.1
-no service timestamps log datetime msec
-no service timestamps debug datetime msec
-no service password-encryption
-!
-hostname R1
-!
-!
-!
-enable password cisco
-!
-!
-!
-
-
-R1(config)#enable secret ccna
-R1(config)#exit
-R1#
+<br/>
+R1(config)#enable secret ccna<br/>
+R1(config)#exit<br/>
+R1#<br/>
 %SYS-5-CONFIG_I: Configured from console by console
 
 R1#copy run start
