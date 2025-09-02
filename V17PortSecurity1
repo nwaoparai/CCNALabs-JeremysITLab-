@@ -1,0 +1,62 @@
+1. From the CLI of SW1, find the MAC address of SW2.  From the CLI of SW2, find the MAC address of SW1.
+
+2. Why don't the MAC addresses of PC1 and PC2 appear in the MAC address tables of SW1 and SW2?
+
+3. Ping from PC1 to PC2 to generate traffic between them.  Check the MAC address tables of the switches again.
+
+4. Enable port security on the switch interfaces connected to PCs.
+
+5. How many MAC addresses are allowed on a port-security enabled interface by default?  Explicitly configure this setting on each switch.
+
+6. What is the default action in the event of a port-security violation?  Explicitly configure this setting on each switch.
+
+7. Manually configure the MAC address of PC1 as a secure MAC address for SW1 F0/2
+    Manually configure the MAC address of PC2 as a secure MAC address for SW2 F0/2
+
+SW1>en
+SW1#sh mac-
+SW1#sh mac-address-table 
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+
+   1    0001.9626.4101    DYNAMIC     Fa0/1
+
+C:\>ping 192.168.1.12
+
+Pinging 192.168.1.12 with 32 bytes of data:
+
+Reply from 192.168.1.12: bytes=32 time<1ms TTL=128
+Reply from 192.168.1.12: bytes=32 time<1ms TTL=128
+Reply from 192.168.1.12: bytes=32 time<1ms TTL=128
+Reply from 192.168.1.12: bytes=32 time<1ms TTL=128
+
+SW1#sh mac-address-table 
+          Mac Address Table
+-------------------------------------------
+
+Vlan    Mac Address       Type        Ports
+----    -----------       --------    -----
+
+   1    0001.9626.4101    DYNAMIC     Fa0/1
+   1    0002.16e2.2193    DYNAMIC     Fa0/2
+   1    0007.ec28.0631    DYNAMIC     Fa0/1
+
+SW1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW1(config)#int f0/2
+SW1(config-if)#switchport mode access
+SW1(config-if)#switchport port-
+SW1(config-if)#switchport port-security
+SW1(config-if)#switchport port-security maximum 1
+SW1(config-if)#switchport port-security violation shutdown
+
+SW2(config)#int f0/2
+SW2(config-if)#switch mode access
+SW2(config-if)#switch port-
+SW2(config-if)#switch port-security 
+SW2(config-if)#switch port-security maximum 1
+SW2(config-if)#switch port-security violation shut
+
