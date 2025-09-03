@@ -1,0 +1,21 @@
+Configure standard ACLs to achieve the following requirements:
+---only computers in the 192.168.1.0/24 network can access SRV1
+---PC4 cannot communicate with the 192.168.1.0/24 network.
+
+R2>en
+R2#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R2(config)#access-list 1 permit 192.168.1.0 0.0.0.255
+R2(config)#int f0/0
+R2(config-if)#ip access-group out
+% Incomplete command.
+R2(config-if)#ip access-group 1 out
+
+R1>en
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#access-list 1 deny host 192.168.2.14
+R1(config)#access-list 1 permit any
+R1(config)#do wr
+R1(config)#int f0/0
+R1(config-if)#ip access-group 1 out
