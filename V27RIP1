@@ -1,0 +1,26 @@
+Step 1: Configure RIP (do not enable version 2) on R1 and R2, and advertise the networks on each of their interfaces
+
+Step 2: After giving RIP time to converge, check the routing table of R1.  What route has it learned? 
+
+Step 3: Enable RIP verison 2 and disable auto-summary on R1 and R2.
+
+Step 4: After giving RIP time to converge, check the routing table of R1 again.  What routes has it learned?
+
+R1>en
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#router rip
+R1(config-router)#network 192.168.1.0
+
+R2>en
+R2#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R2(config)#router rip
+R2(config-router)#network 192.168.1.0
+R2(config-router)#network 10.0.0.0
+
+R1(config-router)#version 2
+R1(config-router)#no auto-summary 
+
+R2(config-router)#version 2
+R2(config-router)#no auto-summary
