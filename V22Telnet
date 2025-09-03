@@ -1,0 +1,45 @@
+1: Configure R1's G0/0 interface and SW1's VLAN1 interface with the indicated IP addresses.
+
+2: Configure the following user account on SW1 and R1:
+   username: cisco  /  password: CCNA
+
+3: Configure VTY lines 0 through 15 on SW1 and R1 as follows:
+   -require the use of the local user database to connect to the vty lines
+   -allow only telnet connections to the vty lines
+
+4: Attempt to telnet to each device from PC1.
+
+SW1>en
+SW1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SW1(config)#int vlan 1
+SW1(config-if)#ip address 192.168.1.2 255.255.255.0
+SW1(config-if)#no shut
+
+SW1(config)#username cisco password CCNA
+SW1(config)#line vty 0 15
+SW1(config-line)#login local
+SW1(config-line)#transport input telnet
+
+R1>en
+R1#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#int g0/0
+R1(config-if)#ip add 192.168.1.1 255.255.255.0
+R1(config-if)#no shut
+
+R1(config-if)#exit
+R1(config)#username cisco password CCNA
+R1(config)#line vty 0 15
+R1(config-line)#login local
+R1(config-line)#transport input telnet
+
+C:\>telnet 192.168.1.2
+Trying 192.168.1.2 ...Open
+
+
+User Access Verification
+
+Username: cisco
+Password: 
+SW1>
