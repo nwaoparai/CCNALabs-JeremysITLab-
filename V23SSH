@@ -1,0 +1,73 @@
+1: Configure the hostnames of SW1 and R1.
+
+2: Configure R1's G0/0 interface and SW1's VLAN1 interface with the indicated IP addresses.
+
+3: Configure the following user account on SW1 and R1:
+   username: cisco  /  password: CCNA
+
+4: Configure a DNS domain name of cisco.com on SW1 and R1.
+
+5: Generate the keys that will be used to encrypt  the SSH packets on each device, with a modulus size of 1024.
+
+6: Configure VTY lines 0 through 15 on SW1 and R1 as follows:
+   -require the use of the local user database to connect to the vty lines
+   -allow only SSH connections to the vty lines
+   -terminate connections after 5 minutes of inactivity
+
+7: Enable SSH version 2 on each device.
+
+8: Attempt to connct to each device using SSH from PC1.
+
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname R1
+R1(config)#int g0/0
+R1(config-if)#ip address 192.168.1.1 255.255.255.0
+R1(config-if)#no shut
+R1(config-if)#exit
+R1(config)#username cisco password CCNA
+R1(config)#ip domain-name cisco.com
+R1(config)#crypto key generate rsa
+R1(config)#line vty 0 15
+*Feb 28 16:7:28.730: %SSH-5-ENABLED: SSH 1.99 has been enabled
+R1(config-line)#login local
+R1(config-line)#transport input ssh
+R1(config-line)#exec-timeout ?
+  <0-35791>  Timeout in minutes
+R1(config-line)#exec-timeout 5
+R1(config-line)#exit
+R1(config)#ip ssh version 2
+R1(config)#do wr
+
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname SW1
+SW1(config)#int vlan 1
+SW1(config-if)#ip add 192.168.1.2 255.255.255.0
+SW1(config-if)#no shut
+SW1(config-if)#exit
+SW1(config)#username cisco password CCNA
+SW1(config)#ip domain-name cisco.com
+SW1(config)#crypto key generate rsa
+SW1(config)#line vty 0 15
+*Feb 28 16:7:9.157: %SSH-5-ENABLED: SSH 1.99 has been enabled
+SW1(config-line)#login local
+SW1(config-line)#transport input ssh
+SW1(config-line)#exec-timeout 5
+SW1(config-line)#exit
+SW1(config)#ip ssh version 2
+SW1(config)#do wr
+
+C:\>ssh -l cisco 192.168.1.1
+
+Password: 
+
+
+
+R1>
+R1>
+R1>exit
+
+[Connection to 192.168.1.1 closed by foreign host]
